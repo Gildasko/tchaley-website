@@ -222,7 +222,7 @@ footer { border-top: 1px solid var(--line); padding: 36px 48px; display: flex; j
 
 <!-- NAV -->
 <nav>
-  <a class="logo" href="#">Tchaley<span class="logo-dot"></span></a>
+  <a class="logo" href="#"><img src="logo.png" alt="Tchaley" style="height:38px;border-radius:10px;"></a>
   <ul class="nav-links">
     <li><a href="#features">Fonctionnalités</a></li>
     <li><a href="#activites">Activités</a></li>
@@ -412,19 +412,11 @@ footer { border-top: 1px solid var(--line); padding: 36px 48px; display: flex; j
   <h2 class="cta-title">Ta ville joue.<br>Rejoins la partie.</h2>
   <p class="cta-sub">Gratuit. Disponible sur iOS et Android.</p>
   <div class="store-row">
-    <a class="store-btn" href="#">
-      <span class="store-icon">🍎</span>
-      <span class="store-text">
-        <span class="store-sub">Télécharger sur</span>
-        <span class="store-name">App Store</span>
-      </span>
+    <a href="#" style="display:inline-block;transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height:54px;">
     </a>
-    <a class="store-btn" href="#">
-      <span class="store-icon">🤖</span>
-      <span class="store-text">
-        <span class="store-sub">Disponible sur</span>
-        <span class="store-name">Google Play</span>
-      </span>
+    <a href="#" style="display:inline-block;transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" style="height:54px;">
     </a>
   </div>
 </section>
