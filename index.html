@@ -5,521 +5,405 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tchaley — Tous les sports, ensemble</title>
 <meta name="description" content="Trouve des partenaires sportifs près de toi en Afrique de l'Ouest. Vélo, basket, foot, yoga, tennis et plus encore.">
-<meta property="og:title" content="Tchaley — Tous les sports, ensemble">
-<meta property="og:description" content="Trouve des partenaires sportifs près de toi. Lomé, Abidjan, Dakar, Cotonou.">
-<meta property="og:image" content="og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --laterite: #C4501B;
-    --laterite-dark: #9C3D12;
-    --laterite-light: #E8623A;
-    --vert: #1F7A4D;
-    --vert-light: #2A9E62;
-    --craie: #F7F3EB;
-    --ink: #1C1A16;
-    --ink-soft: #4A4540;
-    --line: #E6DFD2;
-    --white: #ffffff;
-  }
+:root {
+  --laterite: #C4501B;
+  --laterite-light: #E8623A;
+  --vert: #1F7A4D;
+  --vert-light: #2A9E62;
+  --craie: #F7F3EB;
+  --ink: #1C1A16;
+  --ink-soft: #4A4540;
+  --line: rgba(247,243,235,0.1);
+  --white: #ffffff;
+}
 
-  html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--ink); color: var(--craie); overflow-x: hidden; }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--ink);
-    color: var(--craie);
-    overflow-x: hidden;
-  }
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px;
+  background: rgba(28,26,22,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+.logo { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--craie); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+.logo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--vert); display: inline-block; margin-left: 1px; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { color: rgba(247,243,235,0.6); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--craie); }
+.nav-cta { background: var(--laterite); color: white; padding: 10px 22px; border-radius: 100px; text-decoration: none; font-size: 14px; font-weight: 700; transition: background 0.2s; }
+.nav-cta:hover { background: var(--laterite-light); }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 40px;
-    background: rgba(28, 26, 22, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(247,243,235,0.08);
-  }
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-size: 22px; font-weight: 800;
-    color: var(--craie); text-decoration: none;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .nav-logo span { color: var(--laterite); }
-  .nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--vert); display: inline-block; }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a { color: rgba(247,243,235,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--craie); }
-  .nav-cta {
-    background: var(--laterite); color: white;
-    padding: 10px 24px; border-radius: 100px;
-    text-decoration: none; font-size: 14px; font-weight: 600;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--laterite-light); }
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 60px;
+  padding: 120px 48px 80px;
+  max-width: 1280px; margin: 0 auto;
+  position: relative;
+}
+.hero-left { position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(196,80,27,0.12); border: 1px solid rgba(196,80,27,0.25);
+  padding: 5px 14px; border-radius: 100px;
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  color: var(--laterite-light); text-transform: uppercase; margin-bottom: 28px;
+}
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 800; line-height: 1.0;
+  margin-bottom: 22px; letter-spacing: -1px;
+}
+.hero-title em { color: var(--laterite); font-style: normal; display: block; }
+.hero-sub { font-size: 18px; color: rgba(247,243,235,0.6); line-height: 1.65; margin-bottom: 40px; max-width: 460px; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--laterite); color: white;
+  padding: 15px 30px; border-radius: 100px;
+  text-decoration: none; font-size: 15px; font-weight: 700;
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--laterite-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,80,27,0.35); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent; color: var(--craie);
+  padding: 15px 30px; border-radius: 100px;
+  text-decoration: none; font-size: 15px; font-weight: 600;
+  border: 1px solid rgba(247,243,235,0.18); transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: rgba(247,243,235,0.4); }
+.hero-stats { display: flex; gap: 36px; }
+.stat-item { }
+.stat-val { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--craie); line-height: 1; }
+.stat-label { font-size: 12px; color: rgba(247,243,235,0.4); margin-top: 4px; font-weight: 500; }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 120px 40px 80px;
-    position: relative; overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(196,80,27,0.15) 0%, transparent 70%);
-  }
-  .hero-content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(196,80,27,0.15); border: 1px solid rgba(196,80,27,0.3);
-    padding: 6px 16px; border-radius: 100px;
-    font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
-    color: var(--laterite-light); text-transform: uppercase;
-    margin-bottom: 28px;
-  }
-  .hero-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(52px, 8vw, 96px);
-    font-weight: 800; line-height: 1.0;
-    margin-bottom: 24px;
-    max-width: 800px;
-  }
-  .hero-title em { color: var(--laterite); font-style: normal; }
-  .hero-subtitle {
-    font-size: clamp(16px, 2vw, 20px);
-    color: rgba(247,243,235,0.65);
-    max-width: 520px; line-height: 1.6;
-    margin-bottom: 48px;
-  }
-  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 80px; }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--laterite); color: white;
-    padding: 16px 32px; border-radius: 100px;
-    text-decoration: none; font-size: 16px; font-weight: 700;
-    transition: all 0.2s; letter-spacing: 0.3px;
-  }
-  .btn-primary:hover { background: var(--laterite-light); transform: translateY(-1px); }
-  .btn-secondary {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: transparent; color: var(--craie);
-    padding: 16px 32px; border-radius: 100px;
-    text-decoration: none; font-size: 16px; font-weight: 600;
-    border: 1px solid rgba(247,243,235,0.2);
-    transition: all 0.2s;
-  }
-  .btn-secondary:hover { border-color: rgba(247,243,235,0.5); }
+/* iPhone mockup */
+.hero-right { display: flex; justify-content: center; align-items: center; position: relative; }
+.phone-wrap { position: relative; width: 300px; }
+.phone-frame {
+  position: relative; z-index: 2;
+  background: #0a0a0a;
+  border-radius: 44px;
+  padding: 12px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+  width: 280px;
+}
+.phone-screen { border-radius: 34px; overflow: hidden; width: 100%; display: block; }
+.phone-glow {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(196,80,27,0.3) 0%, transparent 70%);
+  z-index: 1; pointer-events: none;
+}
 
-  /* VILLES */
-  .hero-villes {
-    display: flex; gap: 32px; align-items: center; flex-wrap: wrap;
-  }
-  .hero-villes-label { font-size: 12px; color: rgba(247,243,235,0.4); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
-  .ville-pill {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 14px; color: rgba(247,243,235,0.7); font-weight: 500;
-  }
-  .ville-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--vert); }
+/* ── TICKER ── */
+.ticker-wrap { background: var(--laterite); padding: 13px 0; overflow: hidden; }
+.ticker { display: flex; animation: ticker 30s linear infinite; white-space: nowrap; }
+.ticker-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 24px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9); text-transform: uppercase; letter-spacing: 0.5px; }
+.ticker-item::after { content: "·"; margin-left: 24px; opacity: 0.4; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-  /* SPORTS TICKER */
-  .ticker-wrap {
-    background: var(--laterite);
-    padding: 14px 0; overflow: hidden;
-    border-top: 1px solid rgba(247,243,235,0.1);
-    border-bottom: 1px solid rgba(247,243,235,0.1);
-  }
-  .ticker {
-    display: flex; gap: 0;
-    animation: ticker 28s linear infinite;
-    white-space: nowrap;
-  }
-  .ticker-item {
-    display: inline-flex; align-items: center; gap: 12px;
-    padding: 0 28px;
-    font-family: 'Syne', sans-serif;
-    font-size: 15px; font-weight: 700;
-    color: rgba(255,255,255,0.9);
-    text-transform: uppercase; letter-spacing: 1px;
-  }
-  .ticker-item::after { content: "·"; margin-left: 28px; opacity: 0.5; }
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* ── FEATURES ── */
+.features-section { padding: 100px 48px; max-width: 1280px; margin: 0 auto; }
+.section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--laterite-light); margin-bottom: 14px; }
+.section-title { font-family: 'Syne', sans-serif; font-size: clamp(30px, 3.5vw, 48px); font-weight: 800; line-height: 1.1; margin-bottom: 14px; }
+.section-sub { font-size: 17px; color: rgba(247,243,235,0.5); line-height: 1.65; max-width: 480px; margin-bottom: 60px; }
 
-  /* FEATURES */
-  .section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
-  .section-label {
-    font-size: 11px; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; color: var(--laterite-light);
-    margin-bottom: 16px;
-  }
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 800; line-height: 1.1;
-    margin-bottom: 16px;
-  }
-  .section-sub {
-    font-size: 18px; color: rgba(247,243,235,0.55);
-    max-width: 480px; line-height: 1.6; margin-bottom: 64px;
-  }
+/* Feature avec screenshot */
+.feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 120px; }
+.feature-row.reverse { direction: rtl; }
+.feature-row.reverse > * { direction: ltr; }
+.feature-content { }
+.feature-icon-wrap { width: 52px; height: 52px; border-radius: 16px; background: rgba(196,80,27,0.12); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
+.feature-title { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; margin-bottom: 12px; }
+.feature-desc { font-size: 16px; color: rgba(247,243,235,0.55); line-height: 1.7; margin-bottom: 24px; }
+.feature-points { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.feature-points li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(247,243,235,0.7); }
+.feature-points li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--vert); flex-shrink: 0; }
 
-  .features-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-    background: rgba(247,243,235,0.06);
-    border: 1px solid rgba(247,243,235,0.08);
-    border-radius: 24px; overflow: hidden;
-  }
-  .feature-card {
-    background: rgba(28,26,22,0.8);
-    padding: 40px 36px;
-    transition: background 0.2s;
-  }
-  .feature-card:hover { background: rgba(196,80,27,0.08); }
-  .feature-icon {
-    width: 48px; height: 48px; border-radius: 14px;
-    background: rgba(196,80,27,0.15);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; margin-bottom: 20px;
-  }
-  .feature-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 18px; font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .feature-desc { font-size: 14px; color: rgba(247,243,235,0.55); line-height: 1.6; }
+.screen-showcase { position: relative; }
+.screen-phone {
+  background: #0a0a0a;
+  border-radius: 36px; padding: 10px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+  width: 260px; margin: 0 auto;
+}
+.screen-phone img { border-radius: 28px; width: 100%; display: block; }
+.screen-glow-green {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(31,122,77,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.screen-glow-orange {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(196,80,27,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
 
-  /* ACTIVITES */
-  .activites-section { padding: 100px 0; background: rgba(247,243,235,0.03); }
-  .activites-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-  .activites-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
-    margin-top: 48px;
-  }
-  .activite-card {
-    background: rgba(247,243,235,0.05);
-    border: 1px solid rgba(247,243,235,0.08);
-    border-radius: 18px; padding: 28px 24px;
-    transition: all 0.2s; cursor: default;
-  }
-  .activite-card:hover {
-    background: rgba(196,80,27,0.12);
-    border-color: rgba(196,80,27,0.3);
-    transform: translateY(-3px);
-  }
-  .activite-emoji { font-size: 32px; margin-bottom: 12px; display: block; }
-  .activite-nom { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; }
+/* ── ACTIVITES ── */
+.activites-section { padding: 80px 48px; background: rgba(247,243,235,0.02); }
+.activites-inner { max-width: 1280px; margin: 0 auto; }
+.activites-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 44px; }
+.activite-card { background: rgba(247,243,235,0.04); border: 1px solid rgba(247,243,235,0.07); border-radius: 16px; padding: 22px 16px; text-align: center; transition: all 0.2s; cursor: default; }
+.activite-card:hover { background: rgba(196,80,27,0.1); border-color: rgba(196,80,27,0.25); transform: translateY(-2px); }
+.activite-emoji { font-size: 28px; display: block; margin-bottom: 8px; }
+.activite-nom { font-size: 13px; font-weight: 600; color: rgba(247,243,235,0.8); }
 
-  /* FIABILITE */
-  .fiabilite-section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
-  .fiabilite-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-  .fiabilite-visual {
-    background: rgba(247,243,235,0.04);
-    border: 1px solid rgba(247,243,235,0.08);
-    border-radius: 24px; padding: 40px;
-  }
-  .score-bar { margin-bottom: 20px; }
-  .score-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
-  .score-name { font-size: 14px; font-weight: 600; }
-  .score-val { font-size: 14px; font-weight: 700; color: var(--vert-light); }
-  .score-track { height: 8px; background: rgba(247,243,235,0.1); border-radius: 4px; overflow: hidden; }
-  .score-fill { height: 100%; border-radius: 4px; background: var(--vert); transition: width 0.6s; }
-  .score-fill.warn { background: #B8860B; }
-  .score-fill.danger { background: var(--laterite); }
+/* ── VILLES ── */
+.villes-section { padding: 100px 48px; max-width: 1280px; margin: 0 auto; }
+.villes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 44px; }
+.ville-card { background: rgba(247,243,235,0.04); border: 1px solid rgba(247,243,235,0.07); border-radius: 20px; padding: 36px 24px; text-align: center; transition: all 0.2s; }
+.ville-card:hover { background: rgba(31,122,77,0.08); border-color: rgba(31,122,77,0.25); transform: translateY(-3px); }
+.ville-flag { font-size: 44px; display: block; margin-bottom: 14px; }
+.ville-name { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+.ville-pays { font-size: 12px; color: rgba(247,243,235,0.35); letter-spacing: 1px; text-transform: uppercase; }
 
-  /* VILLES SECTION */
-  .villes-section { padding: 100px 40px; }
-  .villes-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
-  .ville-card {
-    background: rgba(247,243,235,0.04);
-    border: 1px solid rgba(247,243,235,0.08);
-    border-radius: 20px; padding: 32px 24px;
-    text-align: center; transition: all 0.2s;
-  }
-  .ville-card:hover { background: rgba(31,122,77,0.1); border-color: rgba(31,122,77,0.3); }
-  .ville-flag { font-size: 40px; margin-bottom: 12px; display: block; }
-  .ville-name { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 4px; }
-  .ville-pays { font-size: 12px; color: rgba(247,243,235,0.4); letter-spacing: 1px; text-transform: uppercase; }
+/* ── CTA ── */
+.cta-section { padding: 120px 48px; text-align: center; background: linear-gradient(180deg, transparent, rgba(196,80,27,0.07)); }
+.cta-title { font-family: 'Syne', sans-serif; font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.1; margin-bottom: 18px; }
+.cta-sub { font-size: 18px; color: rgba(247,243,235,0.5); margin-bottom: 48px; }
+.store-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.store-btn { display: inline-flex; align-items: center; gap: 14px; background: rgba(247,243,235,0.07); border: 1px solid rgba(247,243,235,0.12); padding: 16px 28px; border-radius: 18px; text-decoration: none; color: var(--craie); transition: all 0.2s; }
+.store-btn:hover { background: rgba(247,243,235,0.12); transform: translateY(-2px); }
+.store-icon { font-size: 30px; }
+.store-text { text-align: left; }
+.store-sub { font-size: 11px; color: rgba(247,243,235,0.45); display: block; margin-bottom: 2px; }
+.store-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; display: block; }
 
-  /* CTA FINAL */
-  .cta-section {
-    padding: 120px 40px; text-align: center;
-    background: linear-gradient(180deg, transparent 0%, rgba(196,80,27,0.08) 100%);
-  }
-  .cta-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 800; line-height: 1.1;
-    margin-bottom: 20px;
-  }
-  .cta-sub { font-size: 18px; color: rgba(247,243,235,0.55); margin-bottom: 48px; }
-  .store-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-  .store-btn {
-    display: inline-flex; align-items: center; gap: 12px;
-    background: rgba(247,243,235,0.08);
-    border: 1px solid rgba(247,243,235,0.15);
-    padding: 14px 28px; border-radius: 16px;
-    text-decoration: none; color: var(--craie);
-    transition: all 0.2s;
-  }
-  .store-btn:hover { background: rgba(247,243,235,0.14); transform: translateY(-2px); }
-  .store-btn-icon { font-size: 28px; }
-  .store-btn-text { text-align: left; }
-  .store-btn-sub { font-size: 11px; color: rgba(247,243,235,0.5); display: block; }
-  .store-btn-name { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; display: block; }
+/* ── FOOTER ── */
+footer { border-top: 1px solid var(--line); padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; max-width: 1280px; margin: 0 auto; }
+.footer-logo { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; }
+.footer-logo span { color: var(--laterite); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { color: rgba(247,243,235,0.35); font-size: 13px; text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--craie); }
+.footer-copy { font-size: 13px; color: rgba(247,243,235,0.25); }
 
-  /* FOOTER */
-  footer {
-    border-top: 1px solid rgba(247,243,235,0.08);
-    padding: 40px;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 16px;
-  }
-  .footer-logo { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; }
-  .footer-logo span { color: var(--laterite); }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a { color: rgba(247,243,235,0.4); font-size: 13px; text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--craie); }
-  .footer-copy { font-size: 13px; color: rgba(247,243,235,0.3); }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    .nav-links { display: none; }
-    .hero { padding: 100px 20px 60px; }
-    .section { padding: 60px 20px; }
-    .features-grid { grid-template-columns: 1fr; }
-    .activites-grid { grid-template-columns: repeat(2, 1fr); }
-    .villes-cards { grid-template-columns: repeat(2, 1fr); }
-    .fiabilite-grid { grid-template-columns: 1fr; }
-    footer { padding: 32px 20px; flex-direction: column; text-align: center; }
-    .villes-section { padding: 60px 20px; }
-    .cta-section { padding: 80px 20px; }
-    .activites-section { padding: 60px 0; }
-    .fiabilite-section { padding: 60px 20px; }
-  }
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 100px 20px 60px; text-align: center; }
+  .hero-right { margin-top: 40px; }
+  .hero-stats { justify-content: center; }
+  .hero-btns { justify-content: center; }
+  .hero-sub { margin: 0 auto 40px; }
+  .features-section { padding: 60px 20px; }
+  .feature-row { grid-template-columns: 1fr; gap: 40px; margin-bottom: 70px; }
+  .feature-row.reverse { direction: ltr; }
+  .activites-section { padding: 60px 20px; }
+  .activites-grid { grid-template-columns: repeat(3, 1fr); }
+  .villes-section { padding: 60px 20px; }
+  .villes-grid { grid-template-columns: repeat(2, 1fr); }
+  .cta-section { padding: 80px 20px; }
+  footer { padding: 28px 20px; flex-direction: column; text-align: center; }
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">
-    <span>Tchaley</span><span class="nav-dot"></span>
-  </a>
+  <a class="logo" href="#">Tchaley<span class="logo-dot"></span></a>
   <ul class="nav-links">
+    <li><a href="#features">Fonctionnalités</a></li>
     <li><a href="#activites">Activités</a></li>
-    <li><a href="#comment">Comment ça marche</a></li>
     <li><a href="#villes">Villes</a></li>
   </ul>
   <a class="nav-cta" href="#telecharger">Télécharger</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <span class="nav-dot"></span>
-      Disponible à Lomé, Abidjan, Dakar & Cotonou
+<section style="background: radial-gradient(ellipse 70% 60% at 75% 50%, rgba(196,80,27,0.12) 0%, transparent 70%);">
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--vert);display:inline-block;"></span>
+      Disponible à Lomé · Abidjan · Dakar · Cotonou
     </div>
     <h1 class="hero-title">
-      Tous les sports.<br><em>Ensemble.</em>
+      Tous les sports.
+      <em>Ensemble.</em>
     </h1>
-    <p class="hero-subtitle">
-      Trouve des partenaires sportifs près de toi en quelques secondes. Crée ou rejoins une session, joue, reviens.
-    </p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="#telecharger">
-        📲 Télécharger l'app
-      </a>
-      <a class="btn-secondary" href="#comment">
-        Comment ça marche →
-      </a>
+    <p class="hero-sub">Trouve des partenaires sportifs près de toi en quelques secondes. Crée ou rejoins une session — vélo, basket, foot, yoga et bien plus.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#telecharger">📲 Télécharger l'app</a>
+      <a class="btn-ghost" href="#features">Découvrir →</a>
     </div>
-    <div class="hero-villes">
-      <span class="hero-villes-label">Disponible à</span>
-      <span class="ville-pill"><span class="ville-dot"></span> Lomé</span>
-      <span class="ville-pill"><span class="ville-dot"></span> Abidjan</span>
-      <span class="ville-pill"><span class="ville-dot"></span> Dakar</span>
-      <span class="ville-pill"><span class="ville-dot"></span> Cotonou</span>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-val">13+</div>
+        <div class="stat-label">Sports disponibles</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">4</div>
+        <div class="stat-label">Villes couvertes</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">100%</div>
+        <div class="stat-label">Gratuit</div>
+      </div>
     </div>
   </div>
+  <div class="hero-right">
+    <div class="phone-wrap">
+      <div class="phone-glow"></div>
+      <div class="phone-frame">
+        <img class="phone-screen" src="screen_sessions.png" alt="Tchaley — Sessions">
+      </div>
+    </div>
+  </div>
+</div>
 </section>
 
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker">
-    <!-- doubled for seamless loop -->
-    <span class="ticker-item">🚴 Vélo</span>
-    <span class="ticker-item">🏀 Basket</span>
-    <span class="ticker-item">⚽ Foot</span>
-    <span class="ticker-item">🎾 Tennis</span>
-    <span class="ticker-item">🏃 Course</span>
-    <span class="ticker-item">🧘 Yoga</span>
-    <span class="ticker-item">🥊 Boxe</span>
-    <span class="ticker-item">🤼 Lutte</span>
-    <span class="ticker-item">🏊 Natation</span>
-    <span class="ticker-item">🏐 Volley</span>
-    <span class="ticker-item">🏸 Badminton</span>
-    <span class="ticker-item">💪 Fitness</span>
-    <span class="ticker-item">🚴 Vélo</span>
-    <span class="ticker-item">🏀 Basket</span>
-    <span class="ticker-item">⚽ Foot</span>
-    <span class="ticker-item">🎾 Tennis</span>
-    <span class="ticker-item">🏃 Course</span>
-    <span class="ticker-item">🧘 Yoga</span>
-    <span class="ticker-item">🥊 Boxe</span>
-    <span class="ticker-item">🤼 Lutte</span>
-    <span class="ticker-item">🏊 Natation</span>
-    <span class="ticker-item">🏐 Volley</span>
-    <span class="ticker-item">🏸 Badminton</span>
-    <span class="ticker-item">💪 Fitness</span>
+    <span class="ticker-item">🚴 Vélo</span><span class="ticker-item">🏀 Basket</span><span class="ticker-item">⚽ Foot</span><span class="ticker-item">🎾 Tennis</span><span class="ticker-item">🏃 Course</span><span class="ticker-item">🧘 Yoga</span><span class="ticker-item">🥊 Boxe</span><span class="ticker-item">🤼 Lutte</span><span class="ticker-item">🏊 Natation</span><span class="ticker-item">🏐 Volley</span><span class="ticker-item">🏸 Badminton</span><span class="ticker-item">💪 Fitness</span>
+    <span class="ticker-item">🚴 Vélo</span><span class="ticker-item">🏀 Basket</span><span class="ticker-item">⚽ Foot</span><span class="ticker-item">🎾 Tennis</span><span class="ticker-item">🏃 Course</span><span class="ticker-item">🧘 Yoga</span><span class="ticker-item">🥊 Boxe</span><span class="ticker-item">🤼 Lutte</span><span class="ticker-item">🏊 Natation</span><span class="ticker-item">🏐 Volley</span><span class="ticker-item">🏸 Badminton</span><span class="ticker-item">💪 Fitness</span>
   </div>
 </div>
 
 <!-- FEATURES -->
-<div id="comment" style="max-width:1200px;margin:0 auto;padding:100px 40px 0;">
-  <div class="section-label">Comment ça marche</div>
-  <h2 class="section-title">Simple comme un coup de sifflet.</h2>
-  <p class="section-sub">Trois étapes et tu joues.</p>
-</div>
-<div style="max-width:1200px;margin:0 auto;padding:0 40px 100px;">
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">📍</div>
-      <div class="feature-title">Trouve une session</div>
-      <p class="feature-desc">Ouvre la carte, vois les sessions près de toi. Filtre par sport, niveau ou distance.</p>
+<section class="features-section" id="features">
+
+  <!-- Feature 1 : Carte -->
+  <div class="feature-row">
+    <div class="feature-content">
+      <div class="feature-icon-wrap">📍</div>
+      <h2 class="feature-title">Trouve une session en 10 secondes.</h2>
+      <p class="feature-desc">Ouvre la carte, vois toutes les sessions près de toi. Filtre par sport, niveau ou distance. Les terrains vérifiés de ta ville sont tous là.</p>
+      <ul class="feature-points">
+        <li>Carte interactive avec sessions en temps réel</li>
+        <li>Filtres par sport, niveau, distance</li>
+        <li>Terrains vérifiés par l'équipe Tchaley</li>
+        <li>Sessions gratuites ou avec participation</li>
+      </ul>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">✋</div>
-      <div class="feature-title">Rejoins en un tap</div>
-      <p class="feature-desc">Inscris-toi en un clic. Tu rejoins le chat de groupe et tu vois qui participe.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🏟️</div>
-      <div class="feature-title">Joue avec ta ville</div>
-      <p class="feature-desc">Retrouve les autres sur le terrain. Après la session, le score de fiabilité se met à jour.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">➕</div>
-      <div class="feature-title">Crée ta session</div>
-      <p class="feature-desc">Choisis le sport, le lieu, l'heure. Gratuit ou avec participation, récurrente ou ponctuelle.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">💬</div>
-      <div class="feature-title">Chat en temps réel</div>
-      <p class="feature-desc">Discute avec les participants. Partage l'itinéraire, coordonne l'arrivée.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">📤</div>
-      <div class="feature-title">Partage sur WhatsApp</div>
-      <p class="feature-desc">Un bouton, ta session est partagée. Invite tes contacts directement depuis l'app.</p>
+    <div class="screen-showcase">
+      <div class="screen-glow-orange"></div>
+      <div class="screen-phone">
+        <img src="screen_carte.png" alt="Carte des terrains à Lomé">
+      </div>
     </div>
   </div>
-</div>
+
+  <!-- Feature 2 : Détail session -->
+  <div class="feature-row reverse">
+    <div class="feature-content">
+      <div class="feature-icon-wrap">✋</div>
+      <h2 class="feature-title">Rejoins, discute, joue.</h2>
+      <p class="feature-desc">Un tap pour t'inscrire. Tu rejoins automatiquement le chat de groupe, tu vois qui participe et le score de fiabilité de chacun.</p>
+      <ul class="feature-points">
+        <li>Inscription en un tap</li>
+        <li>Chat de groupe en temps réel</li>
+        <li>Score de fiabilité visible pour tous</li>
+        <li>Partage direct vers WhatsApp</li>
+      </ul>
+    </div>
+    <div class="screen-showcase">
+      <div class="screen-glow-green"></div>
+      <div class="screen-phone">
+        <img src="screen_detail.png" alt="Détail d'une session Tchaley">
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature 3 : Créer -->
+  <div class="feature-row">
+    <div class="feature-content">
+      <div class="feature-icon-wrap">➕</div>
+      <h2 class="feature-title">Organise ta session en 3 étapes.</h2>
+      <p class="feature-desc">Choisis le sport, fixe le lieu avec l'autocomplétion GPS, définis l'heure et le niveau. Ta session est publiée et partageable en 60 secondes.</p>
+      <ul class="feature-points">
+        <li>13 sports disponibles dont la lutte traditionnelle</li>
+        <li>Autocomplétion d'adresses Google Places</li>
+        <li>Sessions récurrentes chaque semaine</li>
+        <li>Tirage des équipes automatique</li>
+      </ul>
+    </div>
+    <div class="screen-showcase">
+      <div class="screen-glow-orange"></div>
+      <div class="screen-phone">
+        <img src="screen_creer.png" alt="Créer une session Tchaley">
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature 4 : Profil -->
+  <div class="feature-row reverse">
+    <div class="feature-content">
+      <div class="feature-icon-wrap">🛡️</div>
+      <h2 class="feature-title">La fiabilité, c'est tout.</h2>
+      <p class="feature-desc">Chaque joueur a un score de fiabilité visible sur son profil. Tu honores tes inscriptions, tu montes. Tu fais défaut sans prévenir, tu baisses. Fini les no-shows.</p>
+      <ul class="feature-points">
+        <li>+2 points par présence confirmée</li>
+        <li>−10 points en cas d'absence non prévenue</li>
+        <li>Score visible par tous les organisateurs</li>
+        <li>Historique complet sur ton profil</li>
+      </ul>
+    </div>
+    <div class="screen-showcase">
+      <div class="screen-glow-green"></div>
+      <div class="screen-phone">
+        <img src="screen_profil.png" alt="Profil Tchaley avec fiabilité">
+      </div>
+    </div>
+  </div>
+
+</section>
 
 <!-- ACTIVITES -->
 <section class="activites-section" id="activites">
   <div class="activites-inner">
-    <div class="section-label">Les activités</div>
-    <h2 class="section-title">13 sports et plus.</h2>
-    <p class="section-sub">Du basket de quartier à la lutte traditionnelle. Tchaley n'oublie personne.</p>
+    <div class="section-eyebrow">Les activités</div>
+    <h2 class="section-title">13 sports. Un seul app.</h2>
+    <p class="section-sub">Du basketball de quartier à la lutte traditionnelle. Tchaley n'oublie personne.</p>
     <div class="activites-grid">
-      <div class="activite-card"><span class="activite-emoji">⚽</span><div class="activite-nom">Maracana / Foot</div></div>
+      <div class="activite-card"><span class="activite-emoji">⚽</span><div class="activite-nom">Foot</div></div>
       <div class="activite-card"><span class="activite-emoji">🏀</span><div class="activite-nom">Basket</div></div>
       <div class="activite-card"><span class="activite-emoji">🚴</span><div class="activite-nom">Vélo</div></div>
-      <div class="activite-card"><span class="activite-emoji">🏃</span><div class="activite-nom">Course à pied</div></div>
+      <div class="activite-card"><span class="activite-emoji">🏃</span><div class="activite-nom">Course</div></div>
       <div class="activite-card"><span class="activite-emoji">🎾</span><div class="activite-nom">Tennis</div></div>
       <div class="activite-card"><span class="activite-emoji">🏐</span><div class="activite-nom">Volley</div></div>
       <div class="activite-card"><span class="activite-emoji">🧘</span><div class="activite-nom">Yoga</div></div>
       <div class="activite-card"><span class="activite-emoji">🥊</span><div class="activite-nom">Boxe</div></div>
       <div class="activite-card"><span class="activite-emoji">🏊</span><div class="activite-nom">Natation</div></div>
-      <div class="activite-card"><span class="activite-emoji">🤼</span><div class="activite-nom">Lutte traditionnelle</div></div>
+      <div class="activite-card"><span class="activite-emoji">🤼</span><div class="activite-nom">Lutte</div></div>
       <div class="activite-card"><span class="activite-emoji">🏸</span><div class="activite-nom">Badminton</div></div>
       <div class="activite-card"><span class="activite-emoji">💪</span><div class="activite-nom">Fitness</div></div>
     </div>
   </div>
 </section>
 
-<!-- FIABILITE -->
-<section class="fiabilite-section">
-  <div class="fiabilite-grid">
-    <div>
-      <div class="section-label">Système de fiabilité</div>
-      <h2 class="section-title">Fini les no-shows.</h2>
-      <p style="font-size:17px;color:rgba(247,243,235,0.6);line-height:1.7;margin-bottom:32px;">
-        Chaque joueur a un score de fiabilité visible par tous. Tu honores tes inscriptions, ton score monte. Tu fais défaut sans prévenir, il baisse. Les organisateurs voient ton historique avant de t'accepter.
-      </p>
-      <div style="display:flex;gap:24px;flex-wrap:wrap;">
-        <div style="text-align:center;">
-          <div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--vert-light);">+2</div>
-          <div style="font-size:13px;color:rgba(247,243,235,0.5);">par présence</div>
-        </div>
-        <div style="text-align:center;">
-          <div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--laterite-light);">−10</div>
-          <div style="font-size:13px;color:rgba(247,243,235,0.5);">absence non prévenue</div>
-        </div>
-      </div>
-    </div>
-    <div class="fiabilite-visual">
-      <div style="font-size:13px;color:rgba(247,243,235,0.4);margin-bottom:24px;font-weight:600;letter-spacing:0.5px;">SCORES DE LA SESSION</div>
-      <div class="score-bar">
-        <div class="score-bar-header"><span class="score-name">Kofi A. · Organisateur</span><span class="score-val">98%</span></div>
-        <div class="score-track"><div class="score-fill" style="width:98%"></div></div>
-      </div>
-      <div class="score-bar">
-        <div class="score-bar-header"><span class="score-name">Afi D.</span><span class="score-val">91%</span></div>
-        <div class="score-track"><div class="score-fill" style="width:91%"></div></div>
-      </div>
-      <div class="score-bar">
-        <div class="score-bar-header"><span class="score-name">Mawuli K.</span><span class="score-val" style="color:var(--laterite-light);">74%</span></div>
-        <div class="score-track"><div class="score-fill warn" style="width:74%"></div></div>
-      </div>
-      <div class="score-bar">
-        <div class="score-bar-header"><span class="score-name">Akua M.</span><span class="score-val">85%</span></div>
-        <div class="score-track"><div class="score-fill" style="width:85%"></div></div>
-      </div>
-      <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(247,243,235,0.08);font-size:13px;color:rgba(247,243,235,0.4);">
-        🛡️ Le score est calculé automatiquement après chaque session
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- VILLES -->
 <section class="villes-section" id="villes">
-  <div style="max-width:1200px;margin:0 auto;">
-    <div class="section-label">Disponible dans</div>
-    <h2 class="section-title">4 villes d'Afrique de l'Ouest.</h2>
-    <p class="section-sub">Et bientôt dans d'autres capitales.</p>
-    <div class="villes-cards">
-      <div class="ville-card">
-        <span class="ville-flag">🇹🇬</span>
-        <div class="ville-name">Lomé</div>
-        <div class="ville-pays">Togo</div>
-      </div>
-      <div class="ville-card">
-        <span class="ville-flag">🇨🇮</span>
-        <div class="ville-name">Abidjan</div>
-        <div class="ville-pays">Côte d'Ivoire</div>
-      </div>
-      <div class="ville-card">
-        <span class="ville-flag">🇸🇳</span>
-        <div class="ville-name">Dakar</div>
-        <div class="ville-pays">Sénégal</div>
-      </div>
-      <div class="ville-card">
-        <span class="ville-flag">🇧🇯</span>
-        <div class="ville-name">Cotonou</div>
-        <div class="ville-pays">Bénin</div>
-      </div>
-    </div>
+  <div class="section-eyebrow">Où on joue</div>
+  <h2 class="section-title">4 villes, bientôt partout.</h2>
+  <p class="section-sub">Tchaley est fait pour l'Afrique de l'Ouest. D'autres villes arrivent bientôt.</p>
+  <div class="villes-grid">
+    <div class="ville-card"><span class="ville-flag">🇹🇬</span><div class="ville-name">Lomé</div><div class="ville-pays">Togo</div></div>
+    <div class="ville-card"><span class="ville-flag">🇨🇮</span><div class="ville-name">Abidjan</div><div class="ville-pays">Côte d'Ivoire</div></div>
+    <div class="ville-card"><span class="ville-flag">🇸🇳</span><div class="ville-name">Dakar</div><div class="ville-pays">Sénégal</div></div>
+    <div class="ville-card"><span class="ville-flag">🇧🇯</span><div class="ville-name">Cotonou</div><div class="ville-pays">Bénin</div></div>
   </div>
 </section>
 
@@ -527,19 +411,19 @@
 <section class="cta-section" id="telecharger">
   <h2 class="cta-title">Ta ville joue.<br>Rejoins la partie.</h2>
   <p class="cta-sub">Gratuit. Disponible sur iOS et Android.</p>
-  <div class="store-buttons">
+  <div class="store-row">
     <a class="store-btn" href="#">
-      <span class="store-btn-icon">🍎</span>
-      <span class="store-btn-text">
-        <span class="store-btn-sub">Télécharger sur</span>
-        <span class="store-btn-name">App Store</span>
+      <span class="store-icon">🍎</span>
+      <span class="store-text">
+        <span class="store-sub">Télécharger sur</span>
+        <span class="store-name">App Store</span>
       </span>
     </a>
     <a class="store-btn" href="#">
-      <span class="store-btn-icon">🤖</span>
-      <span class="store-btn-text">
-        <span class="store-btn-sub">Disponible sur</span>
-        <span class="store-btn-name">Google Play</span>
+      <span class="store-icon">🤖</span>
+      <span class="store-text">
+        <span class="store-sub">Disponible sur</span>
+        <span class="store-name">Google Play</span>
       </span>
     </a>
   </div>
