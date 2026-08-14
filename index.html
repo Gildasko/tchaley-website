@@ -138,8 +138,7 @@ footer { border-top: 1px solid var(--line); padding: 36px 48px; display: flex; j
   footer { padding: 28px 20px; flex-direction: column; text-align: center; }
 }
 
-/* LANG hidden */
-[data-lang] { display: none; }
+/* LANG - JS will handle visibility */
 </style>
 </head>
 <body>
@@ -435,7 +434,6 @@ footer { border-top: 1px solid var(--line); padding: 36px 48px; display: flex; j
 </footer>
 
 <script>
-// Langue par défaut
 let currentLang = localStorage.getItem('tchaley-lang') || 'fr';
 
 function setLang(lang) {
@@ -443,18 +441,30 @@ function setLang(lang) {
   localStorage.setItem('tchaley-lang', lang);
   document.documentElement.lang = lang;
 
-  // Affiche/cache les éléments selon la langue
+  // Pour chaque élément avec data-lang
   document.querySelectorAll('[data-lang]').forEach(el => {
-    el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+    const elLang = el.getAttribute('data-lang');
+    if (elLang === lang) {
+      // Restore display based on tag type
+      const tag = el.tagName.toLowerCase();
+      if (['span', 'a', 'em'].includes(tag)) {
+        el.style.display = 'inline';
+      } else if (['li'].includes(tag)) {
+        el.style.display = 'flex';
+      } else {
+        el.style.display = '';
+      }
+    } else {
+      el.style.display = 'none';
+    }
   });
 
-  // Boutons actifs
   document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 }
 
-// Init au chargement
-setLang(currentLang);
+// Init
+document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
 </script>
 </body>
 </html>
