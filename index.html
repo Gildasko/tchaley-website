@@ -4,205 +4,126 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tchaley — Tous les sports, ensemble</title>
-<meta name="description" content="Trouve des partenaires sportifs près de toi en Afrique de l'Ouest. Vélo, basket, foot, yoga, tennis et plus encore.">
+<meta name="description" content="Trouve des partenaires sportifs près de toi en Afrique de l'Ouest.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --laterite: #C4501B;
-  --laterite-light: #E8623A;
-  --vert: #1F7A4D;
-  --vert-light: #2A9E62;
-  --craie: #F7F3EB;
-  --ink: #1C1A16;
-  --ink-soft: #4A4540;
+  --laterite: #C4501B; --laterite-light: #E8623A;
+  --vert: #1F7A4D; --vert-light: #2A9E62;
+  --craie: #F7F3EB; --ink: #1C1A16; --ink-soft: #4A4540;
   --line: rgba(247,243,235,0.1);
-  --white: #ffffff;
 }
-
 html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; background: var(--ink); color: var(--craie); overflow-x: hidden; }
 
-/* ── NAV ── */
+/* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 18px 48px;
-  background: rgba(28,26,22,0.85);
-  backdrop-filter: blur(16px);
+  background: rgba(28,26,22,0.85); backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--line);
 }
-.logo { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--craie); text-decoration: none; display: flex; align-items: center; gap: 6px; }
-.logo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--vert); display: inline-block; margin-left: 1px; }
+.logo { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--craie); text-decoration: none; display: flex; align-items: center; gap: 8px; }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a { color: rgba(247,243,235,0.6); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
 .nav-links a:hover { color: var(--craie); }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.lang-btn {
+  background: rgba(247,243,235,0.08); border: 1px solid rgba(247,243,235,0.15);
+  color: var(--craie); padding: 6px 14px; border-radius: 100px;
+  font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s;
+}
+.lang-btn:hover { background: rgba(247,243,235,0.15); }
+.lang-btn.active { background: var(--laterite); border-color: var(--laterite); }
 .nav-cta { background: var(--laterite); color: white; padding: 10px 22px; border-radius: 100px; text-decoration: none; font-size: 14px; font-weight: 700; transition: background 0.2s; }
 .nav-cta:hover { background: var(--laterite-light); }
 
-/* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  display: grid; grid-template-columns: 1fr 1fr;
-  align-items: center; gap: 60px;
-  padding: 120px 48px 80px;
-  max-width: 1280px; margin: 0 auto;
-  position: relative;
-}
-.hero-left { position: relative; z-index: 1; }
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(196,80,27,0.12); border: 1px solid rgba(196,80,27,0.25);
-  padding: 5px 14px; border-radius: 100px;
-  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
-  color: var(--laterite-light); text-transform: uppercase; margin-bottom: 28px;
-}
-.hero-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(44px, 5vw, 72px);
-  font-weight: 800; line-height: 1.0;
-  margin-bottom: 22px; letter-spacing: -1px;
-}
+/* HERO */
+.hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; padding: 120px 48px 80px; max-width: 1280px; margin: 0 auto; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(196,80,27,0.12); border: 1px solid rgba(196,80,27,0.25); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--laterite-light); text-transform: uppercase; margin-bottom: 28px; }
+.hero-title { font-family: 'Syne', sans-serif; font-size: clamp(44px, 5vw, 72px); font-weight: 800; line-height: 1.0; margin-bottom: 22px; letter-spacing: -1px; }
 .hero-title em { color: var(--laterite); font-style: normal; display: block; }
 .hero-sub { font-size: 18px; color: rgba(247,243,235,0.6); line-height: 1.65; margin-bottom: 40px; max-width: 460px; }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--laterite); color: white;
-  padding: 15px 30px; border-radius: 100px;
-  text-decoration: none; font-size: 15px; font-weight: 700;
-  transition: all 0.2s;
-}
-.btn-primary:hover { background: var(--laterite-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,80,27,0.35); }
-.btn-ghost {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: transparent; color: var(--craie);
-  padding: 15px 30px; border-radius: 100px;
-  text-decoration: none; font-size: 15px; font-weight: 600;
-  border: 1px solid rgba(247,243,235,0.18); transition: all 0.2s;
-}
+.btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--laterite); color: white; padding: 15px 30px; border-radius: 100px; text-decoration: none; font-size: 15px; font-weight: 700; transition: all 0.2s; }
+.btn-primary:hover { background: var(--laterite-light); transform: translateY(-2px); }
+.btn-ghost { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: var(--craie); padding: 15px 30px; border-radius: 100px; text-decoration: none; font-size: 15px; font-weight: 600; border: 1px solid rgba(247,243,235,0.18); transition: all 0.2s; }
 .btn-ghost:hover { border-color: rgba(247,243,235,0.4); }
 .hero-stats { display: flex; gap: 36px; }
-.stat-item { }
 .stat-val { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--craie); line-height: 1; }
 .stat-label { font-size: 12px; color: rgba(247,243,235,0.4); margin-top: 4px; font-weight: 500; }
-
-/* iPhone mockup */
-.hero-right { display: flex; justify-content: center; align-items: center; position: relative; }
-.phone-wrap { position: relative; width: 300px; }
-.phone-frame {
-  position: relative; z-index: 2;
-  background: #0a0a0a;
-  border-radius: 44px;
-  padding: 12px;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
-  width: 280px;
-}
+.phone-wrap { position: relative; width: 280px; margin: 0 auto; }
+.phone-frame { background: #0a0a0a; border-radius: 44px; padding: 12px; box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08); }
 .phone-screen { border-radius: 34px; overflow: hidden; width: 100%; display: block; }
-.phone-glow {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 320px; height: 320px;
-  background: radial-gradient(circle, rgba(196,80,27,0.3) 0%, transparent 70%);
-  z-index: 1; pointer-events: none;
-}
+.phone-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 320px; height: 320px; background: radial-gradient(circle, rgba(196,80,27,0.3) 0%, transparent 70%); z-index: -1; }
 
-/* ── TICKER ── */
+/* TICKER */
 .ticker-wrap { background: var(--laterite); padding: 13px 0; overflow: hidden; }
 .ticker { display: flex; animation: ticker 30s linear infinite; white-space: nowrap; }
-.ticker-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 24px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9); text-transform: uppercase; letter-spacing: 0.5px; }
+.ticker-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 24px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9); text-transform: uppercase; }
 .ticker-item::after { content: "·"; margin-left: 24px; opacity: 0.4; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* ── FEATURES ── */
+/* SECTIONS */
 .features-section { padding: 100px 48px; max-width: 1280px; margin: 0 auto; }
 .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--laterite-light); margin-bottom: 14px; }
 .section-title { font-family: 'Syne', sans-serif; font-size: clamp(30px, 3.5vw, 48px); font-weight: 800; line-height: 1.1; margin-bottom: 14px; }
 .section-sub { font-size: 17px; color: rgba(247,243,235,0.5); line-height: 1.65; max-width: 480px; margin-bottom: 60px; }
-
-/* Feature avec screenshot */
 .feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 120px; }
 .feature-row.reverse { direction: rtl; }
 .feature-row.reverse > * { direction: ltr; }
-.feature-content { }
 .feature-icon-wrap { width: 52px; height: 52px; border-radius: 16px; background: rgba(196,80,27,0.12); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
 .feature-title { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; margin-bottom: 12px; }
 .feature-desc { font-size: 16px; color: rgba(247,243,235,0.55); line-height: 1.7; margin-bottom: 24px; }
 .feature-points { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .feature-points li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(247,243,235,0.7); }
 .feature-points li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--vert); flex-shrink: 0; }
-
-.screen-showcase { position: relative; }
-.screen-phone {
-  background: #0a0a0a;
-  border-radius: 36px; padding: 10px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
-  width: 260px; margin: 0 auto;
-}
+.screen-phone { background: #0a0a0a; border-radius: 36px; padding: 10px; box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06); width: 260px; margin: 0 auto; position: relative; }
 .screen-phone img { border-radius: 28px; width: 100%; display: block; }
-.screen-glow-green {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(31,122,77,0.2) 0%, transparent 70%);
-  pointer-events: none;
-}
-.screen-glow-orange {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(196,80,27,0.2) 0%, transparent 70%);
-  pointer-events: none;
-}
+.screen-glow-green { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background: radial-gradient(circle, rgba(31,122,77,0.2) 0%, transparent 70%); pointer-events: none; }
+.screen-glow-orange { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background: radial-gradient(circle, rgba(196,80,27,0.2) 0%, transparent 70%); pointer-events: none; }
 
-/* ── ACTIVITES ── */
+/* ACTIVITES */
 .activites-section { padding: 80px 48px; background: rgba(247,243,235,0.02); }
 .activites-inner { max-width: 1280px; margin: 0 auto; }
 .activites-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 44px; }
-.activite-card { background: rgba(247,243,235,0.04); border: 1px solid rgba(247,243,235,0.07); border-radius: 16px; padding: 22px 16px; text-align: center; transition: all 0.2s; cursor: default; }
+.activite-card { background: rgba(247,243,235,0.04); border: 1px solid rgba(247,243,235,0.07); border-radius: 16px; padding: 22px 16px; text-align: center; transition: all 0.2s; }
 .activite-card:hover { background: rgba(196,80,27,0.1); border-color: rgba(196,80,27,0.25); transform: translateY(-2px); }
 .activite-emoji { font-size: 28px; display: block; margin-bottom: 8px; }
 .activite-nom { font-size: 13px; font-weight: 600; color: rgba(247,243,235,0.8); }
 
-/* ── VILLES ── */
+/* VILLES */
 .villes-section { padding: 100px 48px; max-width: 1280px; margin: 0 auto; }
-.villes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 44px; }
+.villes-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 44px; }
 .ville-card { background: rgba(247,243,235,0.04); border: 1px solid rgba(247,243,235,0.07); border-radius: 20px; padding: 36px 24px; text-align: center; transition: all 0.2s; }
 .ville-card:hover { background: rgba(31,122,77,0.08); border-color: rgba(31,122,77,0.25); transform: translateY(-3px); }
 .ville-flag { font-size: 44px; display: block; margin-bottom: 14px; }
 .ville-name { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; margin-bottom: 4px; }
 .ville-pays { font-size: 12px; color: rgba(247,243,235,0.35); letter-spacing: 1px; text-transform: uppercase; }
 
-/* ── CTA ── */
+/* CTA */
 .cta-section { padding: 120px 48px; text-align: center; background: linear-gradient(180deg, transparent, rgba(196,80,27,0.07)); }
 .cta-title { font-family: 'Syne', sans-serif; font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.1; margin-bottom: 18px; }
 .cta-sub { font-size: 18px; color: rgba(247,243,235,0.5); margin-bottom: 48px; }
 .store-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-.store-btn { display: inline-flex; align-items: center; gap: 14px; background: rgba(247,243,235,0.07); border: 1px solid rgba(247,243,235,0.12); padding: 16px 28px; border-radius: 18px; text-decoration: none; color: var(--craie); transition: all 0.2s; }
-.store-btn:hover { background: rgba(247,243,235,0.12); transform: translateY(-2px); }
-.store-icon { font-size: 30px; }
-.store-text { text-align: left; }
-.store-sub { font-size: 11px; color: rgba(247,243,235,0.45); display: block; margin-bottom: 2px; }
-.store-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; display: block; }
 
-/* ── FOOTER ── */
+/* FOOTER */
 footer { border-top: 1px solid var(--line); padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; max-width: 1280px; margin: 0 auto; }
-.footer-logo { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; }
-.footer-logo span { color: var(--laterite); }
+.footer-logo { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
 .footer-links { display: flex; gap: 28px; }
 .footer-links a { color: rgba(247,243,235,0.35); font-size: 13px; text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--craie); }
 .footer-copy { font-size: 13px; color: rgba(247,243,235,0.25); }
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media (max-width: 900px) {
   nav { padding: 16px 20px; }
   .nav-links { display: none; }
   .hero { grid-template-columns: 1fr; padding: 100px 20px 60px; text-align: center; }
-  .hero-right { margin-top: 40px; }
   .hero-stats { justify-content: center; }
   .hero-btns { justify-content: center; }
   .hero-sub { margin: 0 auto 40px; }
@@ -216,61 +137,64 @@ footer { border-top: 1px solid var(--line); padding: 36px 48px; display: flex; j
   .cta-section { padding: 80px 20px; }
   footer { padding: 28px 20px; flex-direction: column; text-align: center; }
 }
+
+/* LANG hidden */
+[data-lang] { display: none; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="logo" href="#">
-  <img src="logo_transparent.png" alt="Tchaley" style="height:38px;">
-  <span style="color:white;font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-left:8px;">Tchaley</span>
-</a>
+    <img src="logo.png" alt="Tchaley" style="height:36px;border-radius:8px;">
+    <img src="logo_transparent.png" alt="" style="height:32px;display:none;">
+    <span style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;">Tchaley</span>
+  </a>
   <ul class="nav-links">
-    <li><a href="#features">Fonctionnalités</a></li>
-    <li><a href="#activites">Activités</a></li>
-    <li><a href="#villes">Villes</a></li>
+    <li><a href="#features" data-lang="fr">Fonctionnalités</a><a href="#features" data-lang="en">Features</a></li>
+    <li><a href="#activites" data-lang="fr">Activités</a><a href="#activites" data-lang="en">Activities</a></li>
+    <li><a href="#villes" data-lang="fr">Villes</a><a href="#villes" data-lang="en">Cities</a></li>
   </ul>
-  <a class="nav-cta" href="#telecharger">Télécharger</a>
+  <div class="nav-right">
+    <button class="lang-btn active" onclick="setLang('fr')" id="btn-fr">FR</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    <a class="nav-cta" href="#telecharger" data-lang="fr">Télécharger</a>
+    <a class="nav-cta" href="#telecharger" data-lang="en">Download</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section style="background: radial-gradient(ellipse 70% 60% at 75% 50%, rgba(196,80,27,0.12) 0%, transparent 70%);">
 <div class="hero">
-  <div class="hero-left">
+  <div>
     <div class="hero-badge">
       <span style="width:6px;height:6px;border-radius:50%;background:var(--vert);display:inline-block;"></span>
-      Disponible à Lomé · Abidjan · Dakar · Cotonou · Dar es Salaam     
+      <span data-lang="fr">Disponible à Lomé · Abidjan · Dakar · Cotonou · Dar es Salaam</span>
+      <span data-lang="en">Available in Lomé · Abidjan · Dakar · Cotonou · Dar es Salaam</span>
     </div>
     <h1 class="hero-title">
-      Tous les sports.
-      <em>Ensemble.</em>
+      <span data-lang="fr">Tous les sports.<em>Ensemble.</em></span>
+      <span data-lang="en">All sports.<em>Together.</em></span>
     </h1>
-    <p class="hero-sub">Trouve des partenaires sportifs près de toi en quelques secondes. Crée ou rejoins une session — vélo, basket, foot, yoga et bien plus.</p>
+    <p class="hero-sub" data-lang="fr">Trouve des partenaires sportifs près de toi en quelques secondes. Crée ou rejoins une session — vélo, basket, foot, yoga et bien plus.</p>
+    <p class="hero-sub" data-lang="en">Find sports partners near you in seconds. Create or join a session — cycling, basketball, football, yoga and more.</p>
     <div class="hero-btns">
-      <a class="btn-primary" href="#telecharger">📲 Télécharger l'app</a>
-      <a class="btn-ghost" href="#features">Découvrir →</a>
+      <a class="btn-primary" href="#telecharger" data-lang="fr">📲 Télécharger l'app</a>
+      <a class="btn-primary" href="#telecharger" data-lang="en">📲 Download the app</a>
+      <a class="btn-ghost" href="#features" data-lang="fr">Découvrir →</a>
+      <a class="btn-ghost" href="#features" data-lang="en">Discover →</a>
     </div>
     <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-val">13+</div>
-        <div class="stat-label">Sports disponibles</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val">5</div>
-        <div class="stat-label">Villes couvertes</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val">100%</div>
-        <div class="stat-label">Gratuit</div>
-      </div>
+      <div><div class="stat-val">13+</div><div class="stat-label" data-lang="fr">Sports disponibles</div><div class="stat-label" data-lang="en">Sports available</div></div>
+      <div><div class="stat-val">5</div><div class="stat-label" data-lang="fr">Villes couvertes</div><div class="stat-label" data-lang="en">Cities covered</div></div>
+      <div><div class="stat-val">100%</div><div class="stat-label" data-lang="fr">Gratuit</div><div class="stat-label" data-lang="en">Free</div></div>
     </div>
   </div>
-  <div class="hero-right">
+  <div style="display:flex;justify-content:center;">
     <div class="phone-wrap">
       <div class="phone-glow"></div>
       <div class="phone-frame">
-        <img class="phone-screen" src="screen_sessions.png" alt="Tchaley — Sessions">
+        <img class="phone-screen" src="screen_sessions.png" alt="Tchaley app">
       </div>
     </div>
   </div>
@@ -280,137 +204,181 @@ footer { border-top: 1px solid var(--line); padding: 36px 48px; display: flex; j
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker">
-    <span class="ticker-item">🚴 Vélo</span><span class="ticker-item">🏀 Basket</span><span class="ticker-item">⚽ Foot</span><span class="ticker-item">🎾 Tennis</span><span class="ticker-item">🏃 Course</span><span class="ticker-item">🧘 Yoga</span><span class="ticker-item">🥊 Boxe</span><span class="ticker-item">🤼 Lutte</span><span class="ticker-item">🏊 Natation</span><span class="ticker-item">🏐 Volley</span><span class="ticker-item">🏸 Badminton</span><span class="ticker-item">💪 Fitness</span>
-    <span class="ticker-item">🚴 Vélo</span><span class="ticker-item">🏀 Basket</span><span class="ticker-item">⚽ Foot</span><span class="ticker-item">🎾 Tennis</span><span class="ticker-item">🏃 Course</span><span class="ticker-item">🧘 Yoga</span><span class="ticker-item">🥊 Boxe</span><span class="ticker-item">🤼 Lutte</span><span class="ticker-item">🏊 Natation</span><span class="ticker-item">🏐 Volley</span><span class="ticker-item">🏸 Badminton</span><span class="ticker-item">💪 Fitness</span>
+    <span class="ticker-item">🚴 <span data-lang="fr">Vélo</span><span data-lang="en">Cycling</span></span>
+    <span class="ticker-item">🏀 <span data-lang="fr">Basket</span><span data-lang="en">Basketball</span></span>
+    <span class="ticker-item">⚽ Football</span>
+    <span class="ticker-item">🎾 Tennis</span>
+    <span class="ticker-item">🏃 <span data-lang="fr">Course</span><span data-lang="en">Running</span></span>
+    <span class="ticker-item">🧘 Yoga</span>
+    <span class="ticker-item">🥊 <span data-lang="fr">Boxe</span><span data-lang="en">Boxing</span></span>
+    <span class="ticker-item">🤼 <span data-lang="fr">Lutte</span><span data-lang="en">Wrestling</span></span>
+    <span class="ticker-item">🏊 <span data-lang="fr">Natation</span><span data-lang="en">Swimming</span></span>
+    <span class="ticker-item">🏐 Volleyball</span>
+    <span class="ticker-item">🏸 Badminton</span>
+    <span class="ticker-item">💪 Fitness</span>
+    <span class="ticker-item">🚴 <span data-lang="fr">Vélo</span><span data-lang="en">Cycling</span></span>
+    <span class="ticker-item">🏀 <span data-lang="fr">Basket</span><span data-lang="en">Basketball</span></span>
+    <span class="ticker-item">⚽ Football</span>
+    <span class="ticker-item">🎾 Tennis</span>
+    <span class="ticker-item">🏃 <span data-lang="fr">Course</span><span data-lang="en">Running</span></span>
+    <span class="ticker-item">🧘 Yoga</span>
+    <span class="ticker-item">🥊 <span data-lang="fr">Boxe</span><span data-lang="en">Boxing</span></span>
+    <span class="ticker-item">🤼 <span data-lang="fr">Lutte</span><span data-lang="en">Wrestling</span></span>
+    <span class="ticker-item">🏊 <span data-lang="fr">Natation</span><span data-lang="en">Swimming</span></span>
+    <span class="ticker-item">🏐 Volleyball</span>
+    <span class="ticker-item">🏸 Badminton</span>
+    <span class="ticker-item">💪 Fitness</span>
   </div>
 </div>
 
 <!-- FEATURES -->
 <section class="features-section" id="features">
+  <div class="section-eyebrow" data-lang="fr">Comment ça marche</div>
+  <div class="section-eyebrow" data-lang="en">How it works</div>
+  <h2 class="section-title" data-lang="fr">Simple comme un coup de sifflet.</h2>
+  <h2 class="section-title" data-lang="en">As simple as a whistle.</h2>
+  <p class="section-sub" data-lang="fr">Trois étapes et tu joues.</p>
+  <p class="section-sub" data-lang="en">Three steps and you play.</p>
 
-  <!-- Feature 1 : Carte -->
   <div class="feature-row">
     <div class="feature-content">
       <div class="feature-icon-wrap">📍</div>
-      <h2 class="feature-title">Trouve une session en 10 secondes.</h2>
-      <p class="feature-desc">Ouvre la carte, vois toutes les sessions près de toi. Filtre par sport, niveau ou distance. Les terrains vérifiés de ta ville sont tous là.</p>
+      <h2 class="feature-title" data-lang="fr">Trouve une session en 10 secondes.</h2>
+      <h2 class="feature-title" data-lang="en">Find a session in 10 seconds.</h2>
+      <p class="feature-desc" data-lang="fr">Ouvre la carte, vois toutes les sessions près de toi. Filtre par sport, niveau ou distance.</p>
+      <p class="feature-desc" data-lang="en">Open the map, see all sessions near you. Filter by sport, level or distance.</p>
       <ul class="feature-points">
-        <li>Carte interactive avec sessions en temps réel</li>
-        <li>Filtres par sport, niveau, distance</li>
-        <li>Terrains vérifiés par l'équipe Tchaley</li>
-        <li>Sessions gratuites ou avec participation</li>
+        <li data-lang="fr">Carte interactive avec sessions en temps réel</li>
+        <li data-lang="en">Interactive map with real-time sessions</li>
+        <li data-lang="fr">Filtres par sport, niveau, distance</li>
+        <li data-lang="en">Filters by sport, level, distance</li>
+        <li data-lang="fr">Terrains vérifiés par l'équipe Tchaley</li>
+        <li data-lang="en">Venues verified by the Tchaley team</li>
+        <li data-lang="fr">Sessions gratuites ou avec participation</li>
+        <li data-lang="en">Free sessions or with entry fee</li>
       </ul>
     </div>
-    <div class="screen-showcase">
+    <div class="screen-showcase" style="position:relative;">
       <div class="screen-glow-orange"></div>
-      <div class="screen-phone">
-        <img src="screen_carte.png" alt="Carte des terrains à Lomé">
-      </div>
+      <div class="screen-phone"><img src="screen_carte.png" alt="Map"></div>
     </div>
   </div>
 
-  <!-- Feature 2 : Détail session -->
   <div class="feature-row reverse">
     <div class="feature-content">
       <div class="feature-icon-wrap">✋</div>
-      <h2 class="feature-title">Rejoins, discute, joue.</h2>
-      <p class="feature-desc">Un tap pour t'inscrire. Tu rejoins automatiquement le chat de groupe, tu vois qui participe et le score de fiabilité de chacun.</p>
+      <h2 class="feature-title" data-lang="fr">Rejoins, discute, joue.</h2>
+      <h2 class="feature-title" data-lang="en">Join, chat, play.</h2>
+      <p class="feature-desc" data-lang="fr">Un tap pour t'inscrire. Tu rejoins automatiquement le chat de groupe et vois le score de fiabilité de chacun.</p>
+      <p class="feature-desc" data-lang="en">One tap to register. You automatically join the group chat and see everyone's reliability score.</p>
       <ul class="feature-points">
-        <li>Inscription en un tap</li>
-        <li>Chat de groupe en temps réel</li>
-        <li>Score de fiabilité visible pour tous</li>
-        <li>Partage direct vers WhatsApp</li>
+        <li data-lang="fr">Inscription en un tap</li>
+        <li data-lang="en">One-tap registration</li>
+        <li data-lang="fr">Chat de groupe en temps réel</li>
+        <li data-lang="en">Real-time group chat</li>
+        <li data-lang="fr">Score de fiabilité visible pour tous</li>
+        <li data-lang="en">Reliability score visible to all</li>
+        <li data-lang="fr">Partage direct vers WhatsApp</li>
+        <li data-lang="en">Direct share to WhatsApp</li>
       </ul>
     </div>
-    <div class="screen-showcase">
+    <div class="screen-showcase" style="position:relative;">
       <div class="screen-glow-green"></div>
-      <div class="screen-phone">
-        <img src="screen_detail.png" alt="Détail d'une session Tchaley">
-      </div>
+      <div class="screen-phone"><img src="screen_detail.png" alt="Session detail"></div>
     </div>
   </div>
 
-  <!-- Feature 3 : Créer -->
   <div class="feature-row">
     <div class="feature-content">
       <div class="feature-icon-wrap">➕</div>
-      <h2 class="feature-title">Organise ta session en 3 étapes.</h2>
-      <p class="feature-desc">Choisis le sport, fixe le lieu avec l'autocomplétion GPS, définis l'heure et le niveau. Ta session est publiée et partageable en 60 secondes.</p>
+      <h2 class="feature-title" data-lang="fr">Organise ta session en 3 étapes.</h2>
+      <h2 class="feature-title" data-lang="en">Organize your session in 3 steps.</h2>
+      <p class="feature-desc" data-lang="fr">Choisis le sport, fixe le lieu, définis l'heure et le niveau. Ta session est publiée en 60 secondes.</p>
+      <p class="feature-desc" data-lang="en">Choose the sport, set the venue, define the time and level. Your session is published in 60 seconds.</p>
       <ul class="feature-points">
-        <li>13 sports disponibles dont la lutte traditionnelle</li>
-        <li>Autocomplétion d'adresses Google Places</li>
-        <li>Sessions récurrentes chaque semaine</li>
-        <li>Tirage des équipes automatique</li>
+        <li data-lang="fr">13 sports disponibles dont la lutte traditionnelle</li>
+        <li data-lang="en">13 sports including traditional wrestling</li>
+        <li data-lang="fr">Autocomplétion d'adresses Google Places</li>
+        <li data-lang="en">Google Places address autocomplete</li>
+        <li data-lang="fr">Sessions récurrentes chaque semaine</li>
+        <li data-lang="en">Recurring weekly sessions</li>
+        <li data-lang="fr">Tirage des équipes automatique</li>
+        <li data-lang="en">Automatic team draw</li>
       </ul>
     </div>
-    <div class="screen-showcase">
+    <div class="screen-showcase" style="position:relative;">
       <div class="screen-glow-orange"></div>
-      <div class="screen-phone">
-        <img src="screen_creer.png" alt="Créer une session Tchaley">
-      </div>
+      <div class="screen-phone"><img src="screen_creer.png" alt="Create session"></div>
     </div>
   </div>
 
-  <!-- Feature 4 : Profil -->
   <div class="feature-row reverse">
     <div class="feature-content">
       <div class="feature-icon-wrap">🛡️</div>
-      <h2 class="feature-title">La fiabilité, c'est tout.</h2>
-      <p class="feature-desc">Chaque joueur a un score de fiabilité visible sur son profil. Tu honores tes inscriptions, tu montes. Tu fais défaut sans prévenir, tu baisses. Fini les no-shows.</p>
+      <h2 class="feature-title" data-lang="fr">La fiabilité, c'est tout.</h2>
+      <h2 class="feature-title" data-lang="en">Reliability is everything.</h2>
+      <p class="feature-desc" data-lang="fr">Chaque joueur a un score de fiabilité visible sur son profil. Tu honores tes inscriptions, tu montes. Tu fais défaut, tu baisses.</p>
+      <p class="feature-desc" data-lang="en">Every player has a reliability score visible on their profile. Honor your registrations, you go up. No-show, you go down.</p>
       <ul class="feature-points">
-        <li>+2 points par présence confirmée</li>
-        <li>−10 points en cas d'absence non prévenue</li>
-        <li>Score visible par tous les organisateurs</li>
-        <li>Historique complet sur ton profil</li>
+        <li data-lang="fr">+2 points par présence confirmée</li>
+        <li data-lang="en">+2 points per confirmed attendance</li>
+        <li data-lang="fr">−10 points en cas d'absence non prévenue</li>
+        <li data-lang="en">−10 points for unexcused absence</li>
+        <li data-lang="fr">Score visible par tous les organisateurs</li>
+        <li data-lang="en">Score visible to all organizers</li>
+        <li data-lang="fr">Historique complet sur ton profil</li>
+        <li data-lang="en">Full history on your profile</li>
       </ul>
     </div>
-    <div class="screen-showcase">
+    <div class="screen-showcase" style="position:relative;">
       <div class="screen-glow-green"></div>
-      <div class="screen-phone">
-        <img src="screen_profil.png" alt="Profil Tchaley avec fiabilité">
-      </div>
+      <div class="screen-phone"><img src="screen_profil.png" alt="Profile"></div>
     </div>
   </div>
 
-  <!-- Feature : Internationalisation -->
-<div class="feature-row">
-  <div class="feature-content">
-    <div class="feature-icon-wrap">🌍</div>
-    <h2 class="feature-title">Français & English.</h2>
-    <p class="feature-desc">Tchaley s'adapte automatiquement à ta langue selon ton pays. Les utilisateurs francophones voient l'app en français, les tanzaniens en anglais.</p>
-    <ul class="feature-points">
-      <li>Détection automatique selon le pays du profil</li>
-      <li>Interface complète en français et en anglais</li>
-      <li>D'autres langues arrivent bientôt</li>
-    </ul>
-  </div>
-  <div class="screen-showcase">
-    <div class="screen-glow-green"></div>
-    <div class="screen-phone">
-      <img src="screen_sessions.png" alt="Tchaley multilingue">
+  <div class="feature-row">
+    <div class="feature-content">
+      <div class="feature-icon-wrap">🌍</div>
+      <h2 class="feature-title" data-lang="fr">Français & English.</h2>
+      <h2 class="feature-title" data-lang="en">French & English.</h2>
+      <p class="feature-desc" data-lang="fr">Tchaley s'adapte automatiquement à ta langue selon ton pays. Les utilisateurs francophones voient l'app en français, les tanzaniens en anglais.</p>
+      <p class="feature-desc" data-lang="en">Tchaley automatically adapts to your language based on your country. French speakers see the app in French, Tanzanians in English.</p>
+      <ul class="feature-points">
+        <li data-lang="fr">Détection automatique selon le pays du profil</li>
+        <li data-lang="en">Automatic detection based on profile country</li>
+        <li data-lang="fr">Interface complète en français et en anglais</li>
+        <li data-lang="en">Full interface in French and English</li>
+        <li data-lang="fr">D'autres langues arrivent bientôt</li>
+        <li data-lang="en">More languages coming soon</li>
+      </ul>
+    </div>
+    <div class="screen-showcase" style="position:relative;">
+      <div class="screen-glow-orange"></div>
+      <div class="screen-phone"><img src="screen_sessions.png" alt="Multilingual"></div>
     </div>
   </div>
-</div>
-
 </section>
 
 <!-- ACTIVITES -->
 <section class="activites-section" id="activites">
   <div class="activites-inner">
-    <div class="section-eyebrow">Les activités</div>
-    <h2 class="section-title">13 sports. Un seul app.</h2>
-    <p class="section-sub">Du basketball de quartier à la lutte traditionnelle. Tchaley n'oublie personne.</p>
+    <div class="section-eyebrow" data-lang="fr">Les activités</div>
+    <div class="section-eyebrow" data-lang="en">Activities</div>
+    <h2 class="section-title" data-lang="fr">13 sports. Un seul app.</h2>
+    <h2 class="section-title" data-lang="en">13 sports. One app.</h2>
+    <p class="section-sub" data-lang="fr">Du basketball de quartier à la lutte traditionnelle.</p>
+    <p class="section-sub" data-lang="en">From street basketball to traditional wrestling.</p>
     <div class="activites-grid">
-      <div class="activite-card"><span class="activite-emoji">⚽</span><div class="activite-nom">Foot</div></div>
-      <div class="activite-card"><span class="activite-emoji">🏀</span><div class="activite-nom">Basket</div></div>
-      <div class="activite-card"><span class="activite-emoji">🚴</span><div class="activite-nom">Vélo</div></div>
-      <div class="activite-card"><span class="activite-emoji">🏃</span><div class="activite-nom">Course</div></div>
+      <div class="activite-card"><span class="activite-emoji">⚽</span><div class="activite-nom" data-lang="fr">Foot</div><div class="activite-nom" data-lang="en">Football</div></div>
+      <div class="activite-card"><span class="activite-emoji">🏀</span><div class="activite-nom" data-lang="fr">Basket</div><div class="activite-nom" data-lang="en">Basketball</div></div>
+      <div class="activite-card"><span class="activite-emoji">🚴</span><div class="activite-nom" data-lang="fr">Vélo</div><div class="activite-nom" data-lang="en">Cycling</div></div>
+      <div class="activite-card"><span class="activite-emoji">🏃</span><div class="activite-nom" data-lang="fr">Course</div><div class="activite-nom" data-lang="en">Running</div></div>
       <div class="activite-card"><span class="activite-emoji">🎾</span><div class="activite-nom">Tennis</div></div>
-      <div class="activite-card"><span class="activite-emoji">🏐</span><div class="activite-nom">Volley</div></div>
+      <div class="activite-card"><span class="activite-emoji">🏐</span><div class="activite-nom">Volleyball</div></div>
       <div class="activite-card"><span class="activite-emoji">🧘</span><div class="activite-nom">Yoga</div></div>
-      <div class="activite-card"><span class="activite-emoji">🥊</span><div class="activite-nom">Boxe</div></div>
-      <div class="activite-card"><span class="activite-emoji">🏊</span><div class="activite-nom">Natation</div></div>
-      <div class="activite-card"><span class="activite-emoji">🤼</span><div class="activite-nom">Lutte</div></div>
+      <div class="activite-card"><span class="activite-emoji">🥊</span><div class="activite-nom" data-lang="fr">Boxe</div><div class="activite-nom" data-lang="en">Boxing</div></div>
+      <div class="activite-card"><span class="activite-emoji">🏊</span><div class="activite-nom" data-lang="fr">Natation</div><div class="activite-nom" data-lang="en">Swimming</div></div>
+      <div class="activite-card"><span class="activite-emoji">🤼</span><div class="activite-nom" data-lang="fr">Lutte</div><div class="activite-nom" data-lang="en">Wrestling</div></div>
       <div class="activite-card"><span class="activite-emoji">🏸</span><div class="activite-nom">Badminton</div></div>
       <div class="activite-card"><span class="activite-emoji">💪</span><div class="activite-nom">Fitness</div></div>
     </div>
@@ -419,22 +387,27 @@ footer { border-top: 1px solid var(--line); padding: 36px 48px; display: flex; j
 
 <!-- VILLES -->
 <section class="villes-section" id="villes">
-  <div class="section-eyebrow">Où on joue</div>
-  <h2 class="section-title">5 villes, bientôt partout.</h2>
-  <p class="section-sub">Tchaley est fait pour l'Afrique de l'Ouest. D'autres villes arrivent bientôt.</p>
+  <div class="section-eyebrow" data-lang="fr">Où on joue</div>
+  <div class="section-eyebrow" data-lang="en">Where we play</div>
+  <h2 class="section-title" data-lang="fr">5 villes, bientôt partout.</h2>
+  <h2 class="section-title" data-lang="en">5 cities, soon everywhere.</h2>
+  <p class="section-sub" data-lang="fr">Tchaley est fait pour l'Afrique. D'autres villes arrivent bientôt.</p>
+  <p class="section-sub" data-lang="en">Tchaley is made for Africa. More cities coming soon.</p>
   <div class="villes-grid">
     <div class="ville-card"><span class="ville-flag">🇹🇬</span><div class="ville-name">Lomé</div><div class="ville-pays">Togo</div></div>
-    <div class="ville-card"><span class="ville-flag">🇨🇮</span><div class="ville-name">Abidjan</div><div class="ville-pays">Côte d'Ivoire</div></div>
-    <div class="ville-card"><span class="ville-flag">🇸🇳</span><div class="ville-name">Dakar</div><div class="ville-pays">Sénégal</div></div>
-    <div class="ville-card"><span class="ville-flag">🇧🇯</span><div class="ville-name">Cotonou</div><div class="ville-pays">Bénin</div></div>
+    <div class="ville-card"><span class="ville-flag">🇨🇮</span><div class="ville-name">Abidjan</div><div class="ville-pays"><span data-lang="fr">Côte d'Ivoire</span><span data-lang="en">Ivory Coast</span></div></div>
+    <div class="ville-card"><span class="ville-flag">🇸🇳</span><div class="ville-name">Dakar</div><div class="ville-pays"><span data-lang="fr">Sénégal</span><span data-lang="en">Senegal</span></div></div>
+    <div class="ville-card"><span class="ville-flag">🇧🇯</span><div class="ville-name">Cotonou</div><div class="ville-pays"><span data-lang="fr">Bénin</span><span data-lang="en">Benin</span></div></div>
     <div class="ville-card"><span class="ville-flag">🇹🇿</span><div class="ville-name">Dar es Salaam</div><div class="ville-pays">Tanzania</div></div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section" id="telecharger">
-  <h2 class="cta-title">Ta ville joue.<br>Rejoins la partie.</h2>
-  <p class="cta-sub">Gratuit. Disponible sur iOS et Android.</p>
+  <h2 class="cta-title" data-lang="fr">Ta ville joue.<br>Rejoins la partie.</h2>
+  <h2 class="cta-title" data-lang="en">Your city plays.<br>Join the game.</h2>
+  <p class="cta-sub" data-lang="fr">Gratuit. Disponible sur iOS et Android.</p>
+  <p class="cta-sub" data-lang="en">Free. Available on iOS and Android.</p>
   <div class="store-row">
     <a href="#" style="display:inline-block;transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
       <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height:54px;">
@@ -447,18 +420,41 @@ footer { border-top: 1px solid var(--line); padding: 36px 48px; display: flex; j
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo" style="display:flex;align-items:center;gap:8px;">
-  <img src="logo_transparent.png" alt="Tchaley" style="height:32px;">
-  <span>Tchaley<span style="color:var(--laterite);">.</span></span>
-</div>
+  <div class="footer-logo">
+    <img src="logo.png" alt="Tchaley" style="height:32px;border-radius:8px;">
+    <span>Tchaley</span>
+  </div>
   <div class="footer-links">
-    <a href="#">Confidentialité</a>
-    <a href="#">CGU</a>
-    <a href="#">Contact</a>
+    <a href="#" data-lang="fr">Confidentialité</a><a href="#" data-lang="en">Privacy</a>
+    <a href="#" data-lang="fr">CGU</a><a href="#" data-lang="en">Terms</a>
+    <a href="#" data-lang="fr">Contact</a><a href="#" data-lang="en">Contact</a>
     <a href="https://github.com/Gildasko/tchaley">GitHub</a>
   </div>
-  <div class="footer-copy">© 2026 Tchaley · Tous les sports, ensemble</div>
+  <div class="footer-copy" data-lang="fr">© 2026 Tchaley · Tous les sports, ensemble</div>
+  <div class="footer-copy" data-lang="en">© 2026 Tchaley · All sports, together</div>
 </footer>
 
+<script>
+// Langue par défaut
+let currentLang = localStorage.getItem('tchaley-lang') || 'fr';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('tchaley-lang', lang);
+  document.documentElement.lang = lang;
+
+  // Affiche/cache les éléments selon la langue
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+  });
+
+  // Boutons actifs
+  document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+
+// Init au chargement
+setLang(currentLang);
+</script>
 </body>
 </html>
